@@ -5,6 +5,9 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 
+import { fetchMessagesFromAPI } from './actions/getMessages'
+import { getAllMessagesFromAPI } from '../server/api'
+
 import App from './components/App'
 import MessageBoardContainer from './containers/MessageBoardContainer'
 
@@ -18,6 +21,13 @@ let store = createStore(
 )
 
 const history = syncHistoryWithStore(browserHistory, store)
+
+
+fetchMessagesFromAPI()
+// store.dispatch(fetchMessagesFromAPI())
+
+// getAllMessagesFromAPI()
+
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
